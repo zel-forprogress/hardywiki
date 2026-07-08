@@ -1,13 +1,7 @@
 import Link from "next/link";
-import { getAllPosts } from "@/lib/posts";
 import { categories } from "@/lib/categories";
-import PostCard from "@/components/PostCard";
 
 export default async function Home() {
-  const posts = await getAllPosts();
-  const featuredPosts = posts.filter((p) => p.featured);
-  const recentPosts = posts.slice(0, 4);
-
   return (
     <div>
       {/* Hero */}
@@ -80,47 +74,7 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Featured */}
-      {featuredPosts.length > 0 && (
-        <section className="mb-14">
-          <h2 className="text-lg font-bold text-stone-900 mb-1 tracking-tight">精选推荐</h2>
-          <p className="text-sm text-stone-500 mb-4">编辑推荐的高质量内容</p>
-          <div className="space-y-4">
-            {featuredPosts.map((post) => (
-              <PostCard key={post.slug} post={post} />
-            ))}
-          </div>
-        </section>
-      )}
-
-      {/* Recent */}
-      <section>
-        <div className="flex items-center justify-between mb-6">
-          <div>
-            <h2 className="text-lg font-bold text-stone-900 tracking-tight">
-              最新文章
-            </h2>
-            <p className="text-sm text-stone-500 mt-1">
-              分享一些我的思考和发现
-            </p>
-          </div>
-          <Link
-            href="/blog"
-            className="text-sm text-teal-600 hover:text-teal-700 font-medium flex items-center gap-1 transition-colors"
-          >
-            查看全部
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7"/>
-            </svg>
-          </Link>
-        </div>
-
-        <div className="space-y-4">
-          {recentPosts.map((post) => (
-            <PostCard key={post.slug} post={post} />
-          ))}
-        </div>
-      </section>
+      {/* 这里留空，以后你可以放自定义内容 */}
     </div>
   );
 }
