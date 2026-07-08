@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { categories } from "@/data/posts";
+import { categories } from "@/lib/categories";
 
 const mainNav = [
   { href: "/", label: "首页" },

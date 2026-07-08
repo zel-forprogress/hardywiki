@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { Post } from "@/data/posts";
+import type { Post } from "@/lib/posts";
 
 interface PostCardProps {
   post: Post;

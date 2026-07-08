@@ -1,19 +1,21 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { posts, categories } from "@/data/posts";
+import { getAllPosts, getCategoryInfo } from "@/lib/posts";
+import { categories } from "@/lib/categories";
 
 interface CategoryPageProps {
   params: { slug: string };
 }
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  const { categories } = await import("@/lib/categories");
   return categories.map((cat) => ({
     slug: cat.slug,
   }));
 }
 
-export function generateMetadata({ params }: CategoryPageProps) {
-  const category = categories.find((c) => c.slug === params.slug);
+export async function generateMetadata({ params }: CategoryPageProps) {
+  const category = getCategoryInfo(params.slug);
   if (!category) return { title: "分类未找到" };
   return {
     title: `${category.name} - Hardy's Wiki`,
@@ -21,9 +23,10 @@ export function generateMetadata({ params }: CategoryPageProps) {
   };
 }
 
-export default function CategoryPage({ params }: CategoryPageProps) {
-  const category = categories.find((c) => c.slug === params.slug);
-  const categoryPosts = posts.filter((p) => p.category === params.slug);
+export default async function CategoryPage({ params }: CategoryPageProps) {
+  const category = getCategoryInfo(params.slug);
+  const allPosts = await getAllPosts();
+  const categoryPosts = allPosts.filter((p) => p.category === params.slug);
 
   if (!category) {
     notFound();

@@ -1,7 +1,9 @@
-import { posts } from "@/data/posts";
+import { getAllPosts } from "@/lib/posts";
 import PostCard from "@/components/PostCard";
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  const posts = await getAllPosts();
+
   return (
     <div>
       <div className="mb-10">

@@ -1,8 +1,10 @@
 import Link from "next/link";
-import { posts, categories } from "@/data/posts";
+import { getAllPosts } from "@/lib/posts";
+import { categories } from "@/lib/categories";
 import PostCard from "@/components/PostCard";
 
-export default function Home() {
+export default async function Home() {
+  const posts = await getAllPosts();
   const featuredPosts = posts.filter((p) => p.featured);
   const recentPosts = posts.slice(0, 4);
 

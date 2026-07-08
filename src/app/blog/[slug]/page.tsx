@@ -1,20 +1,22 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { posts } from "@/data/posts";
-import type { Post } from "@/data/posts";
+import Link from "next/link";
+import { getPostBySlug, getCategoryInfo } from "@/lib/posts";
+import ReactMarkdown from "react-markdown";
 
 interface BlogPostPageProps {
   params: { slug: string };
 }
 
 export async function generateStaticParams() {
+  const { getAllPosts } = await import("@/lib/posts");
+  const posts = await getAllPosts();
   return posts.map((post) => ({
     slug: post.slug,
   }));
 }
 
-export function generateMetadata({ params }: BlogPostPageProps) {
-  const post = posts.find((p) => p.slug === params.slug);
+export async function generateMetadata({ params }: BlogPostPageProps) {
+  const post = await getPostBySlug(params.slug);
   if (!post) return { title: "文章未找到" };
   return {
     title: post.title,
@@ -23,11 +25,13 @@ export function generateMetadata({ params }: BlogPostPageProps) {
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
-  const post = posts.find((p) => p.slug === params.slug);
+  const post = await getPostBySlug(params.slug);
 
   if (!post) {
-    return notFound();
+    notFound();
   }
+
+  const category = getCategoryInfo(post.category);
 
   return (
     <div>
@@ -41,7 +45,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         返回文章列表
       </Link>
 
-      <article className="prose dark:prose-invert max-w-none">
+      <article>
         <div className="mb-6 pb-6 border-b border-stone-200">
           <div className="flex items-center gap-3 mb-4 flex-wrap">
             <time className="text-xs font-medium text-stone-400 tracking-wide">
@@ -54,10 +58,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               </svg>
               {post.readTime} 分钟阅读
             </span>
-            <span className="text-stone-300">·</span>
-            <span className="text-xs font-medium text-teal-700 bg-teal-50 px-2.5 py-1 rounded-md">
-              {post.category}
-            </span>
+            {category && (
+              <>
+                <span className="text-stone-300">·</span>
+                <span className="text-xs font-medium text-teal-700 bg-teal-50 px-2.5 py-1 rounded-md">
+                  {category.icon} {category.name}
+                </span>
+              </>
+            )}
           </div>
 
           <h1 className="text-3xl font-bold text-stone-900 mb-0 tracking-tight">
@@ -65,7 +73,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </h1>
         </div>
 
-        <div dangerouslySetInnerHTML={{ __html: post.content }} />
+        <div className="prose dark:prose-invert max-w-none">
+          <ReactMarkdown>{post.content}</ReactMarkdown>
+        </div>
       </article>
 
       <div className="mt-12 pt-8 border-t border-stone-200">
