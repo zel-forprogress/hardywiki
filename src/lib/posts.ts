@@ -44,24 +44,20 @@ export async function getAllPosts(): Promise<Post[]> {
 }
 
 export async function getPostBySlug(slug: string): Promise<Post | null> {
-  try {
-    const fullPath = path.join(postsDirectory, `${slug}.md`);
-    const fileContents = await fs.readFile(fullPath, "utf8");
-    const { data, content } = matter(fileContents);
+  const fullPath = path.join(postsDirectory, `${slug}.md`);
+  const fileContents = await fs.readFile(fullPath, "utf8");
+  const { data, content } = matter(fileContents);
 
-    return {
-      slug,
-      title: data.title as string,
-      date: data.date as string,
-      category: data.category as string,
-      readTime: data.readTime as number,
-      featured: data.featured as boolean | undefined,
-      excerpt: content.trim().slice(0, 150).replace(/\n/g, " ") + "...",
-      content,
-    };
-  } catch {
-    return null;
-  }
+  return {
+    slug,
+    title: data.title as string,
+    date: data.date as string,
+    category: data.category as string,
+    readTime: data.readTime as number,
+    featured: data.featured as boolean | undefined,
+    excerpt: content.trim().slice(0, 150).replace(/\n/g, " ") + "...",
+    content,
+  };
 }
 
 export function getCategoryInfo(categorySlug: string) {
