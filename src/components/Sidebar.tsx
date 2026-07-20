@@ -7,7 +7,7 @@ import { FormEvent, useState } from "react";
 
 const mainNav = [
   { href: "/", label: "首页" },
-  { href: "/blog", label: "全部文章" },
+  { href: "/blog", label: "文章" },
   { href: "/notes", label: "小记" },
 ];
 
