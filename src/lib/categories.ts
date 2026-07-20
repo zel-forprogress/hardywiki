@@ -29,4 +29,10 @@ export const categories = [
     icon: "🧰",
     description: "开发工具、工作流与效率提升",
   },
+  {
+    slug: "interview",
+    name: "面试",
+    icon: "🎯",
+    description: "面试准备、题目复盘与求职经验",
+  },
 ];
