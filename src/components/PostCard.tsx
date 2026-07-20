@@ -1,13 +1,11 @@
 import Link from "next/link";
-import { getCategoryInfo, type Post } from "@/lib/posts";
+import type { Post } from "@/lib/posts";
 
 interface PostCardProps {
   post: Post;
 }
 
 export default function PostCard({ post }: PostCardProps) {
-  const category = getCategoryInfo(post.category);
-
   return (
     <article className="group">
       <Link href={`/blog/${post.slug}`}>
@@ -24,10 +22,6 @@ export default function PostCard({ post }: PostCardProps) {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
               {post.readTime} 分钟
-            </span>
-            <span className="text-stone-300">·</span>
-            <span className="text-xs font-medium text-teal-700 bg-teal-50 px-2 py-0.5 rounded-md">
-              {category ? `${category.icon} ${category.name}` : post.category}
             </span>
           </div>
 

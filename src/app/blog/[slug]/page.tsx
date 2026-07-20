@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { getPostBySlug, getCategoryInfo } from "@/lib/posts";
+import { getPostBySlug } from "@/lib/posts";
 import ReactMarkdown from "react-markdown";
 
 interface BlogPostPageProps {
@@ -33,8 +33,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     notFound();
   }
 
-  const category = getCategoryInfo(post.category);
-
   return (
     <div>
       <Link
@@ -60,14 +58,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               </svg>
               {post.readTime} 分钟阅读
             </span>
-            {category && (
-              <>
-                <span className="text-stone-300">·</span>
-                <span className="text-xs font-medium text-teal-700 bg-teal-50 px-2.5 py-1 rounded-md">
-                  {category.icon} {category.name}
-                </span>
-              </>
-            )}
           </div>
 
           <h1 className="text-3xl font-bold text-stone-900 mb-0 tracking-tight">
