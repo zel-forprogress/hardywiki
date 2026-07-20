@@ -1,8 +1,10 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { getAllPosts, getCategoryInfo } from "@/lib/posts";
-import { categories } from "@/lib/categories";
+import NoteCard from "@/components/NoteCard";
 import PostCard from "@/components/PostCard";
+import { categories } from "@/lib/categories";
+import { getAllNotes } from "@/lib/notes";
+import { getAllPosts, getCategoryInfo } from "@/lib/posts";
 
 interface CategoryPageProps {
   params: Promise<{ slug: string }>;
@@ -32,8 +34,10 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
     notFound();
   }
 
-  const allPosts = await getAllPosts();
+  const [allPosts, allNotes] = await Promise.all([getAllPosts(), getAllNotes()]);
   const categoryPosts = allPosts.filter((post) => post.category === slug);
+  const categoryNotes = allNotes.filter((note) => note.category === slug);
+  const totalItems = categoryPosts.length + categoryNotes.length;
 
   return (
     <div>
@@ -62,15 +66,37 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         <div className="w-12 h-1 bg-gradient-to-r from-teal-500 to-emerald-500 rounded-full" />
       </div>
 
-      {categoryPosts.length > 0 ? (
-        <div className="space-y-4">
-          {categoryPosts.map((post) => (
-            <PostCard key={post.slug} post={post} />
-          ))}
+      {totalItems > 0 ? (
+        <div className="space-y-10">
+          {categoryPosts.length > 0 && (
+            <section>
+              <h2 className="text-lg font-bold text-stone-900 mb-4 tracking-tight">
+                文章
+              </h2>
+              <div className="space-y-4">
+                {categoryPosts.map((post) => (
+                  <PostCard key={post.slug} post={post} />
+                ))}
+              </div>
+            </section>
+          )}
+
+          {categoryNotes.length > 0 && (
+            <section>
+              <h2 className="text-lg font-bold text-stone-900 mb-4 tracking-tight">
+                小记
+              </h2>
+              <div className="space-y-3">
+                {categoryNotes.map((note) => (
+                  <NoteCard key={note.slug} note={note} />
+                ))}
+              </div>
+            </section>
+          )}
         </div>
       ) : (
         <div className="text-center py-16">
-          <p className="text-stone-500">该分类下暂无文章</p>
+          <p className="text-stone-500">该分类下暂无内容</p>
           <Link href="/blog" className="text-teal-600 hover:text-teal-700 text-sm font-medium mt-2 inline-block">
             查看全部文章 →
           </Link>

@@ -9,6 +9,7 @@ import { categories } from "@/lib/categories";
 const mainNav = [
   { href: "/", label: "首页" },
   { href: "/blog", label: "全部文章" },
+  { href: "/notes", label: "小记" },
 ];
 
 export default function Sidebar() {
@@ -69,7 +70,9 @@ export default function Sidebar() {
         <nav className="mb-5">
           <ul className="space-y-0.5">
             {mainNav.map((link) => {
-              const isActive = pathname === link.href;
+              const isActive =
+                pathname === link.href ||
+                (link.href === "/notes" && pathname.startsWith("/notes/"));
               return (
                 <li key={link.href}>
                   <Link

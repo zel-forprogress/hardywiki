@@ -14,7 +14,7 @@ export default function PostCard({ post }: PostCardProps) {
         <div className="relative p-6 rounded-2xl bg-white border border-stone-200 hover:border-teal-200 hover:shadow-lg hover:shadow-stone-200/50 transition-all duration-300">
           <div className="absolute top-6 left-0 w-0.5 h-8 bg-gradient-to-b from-teal-400 to-emerald-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-          <div className="flex items-center gap-3 mb-3">
+          <div className="flex items-center gap-3 mb-3 flex-wrap">
             <time className="text-xs font-medium text-stone-400 tracking-wide">
               {post.date}
             </time>
