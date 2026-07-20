@@ -17,7 +17,7 @@ export default async function NotesPage() {
       </div>
 
       {notes.length > 0 ? (
-        <div className="space-y-3">
+        <div className="border-y border-stone-200">
           {notes.map((note) => (
             <NoteCard key={note.slug} note={note} />
           ))}

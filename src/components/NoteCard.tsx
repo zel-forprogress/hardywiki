@@ -7,16 +7,17 @@ interface NoteCardProps {
 
 export default function NoteCard({ note }: NoteCardProps) {
   return (
-    <article className="group">
-      <Link href={`/notes/${note.slug}`}>
-        <div className="relative p-5 rounded-2xl bg-white border border-stone-200 hover:border-teal-200 hover:shadow-md hover:shadow-stone-200/50 transition-all duration-300">
-          <div className="flex items-center gap-3 mb-2 flex-wrap">
-            <time className="text-xs font-medium text-stone-400 tracking-wide">
-              {note.date}
-            </time>
-          </div>
+    <article className="group border-b border-stone-100 last:border-b-0">
+      <Link
+        href={`/notes/${note.slug}`}
+        className="grid gap-2 py-4 transition-colors hover:bg-stone-50/70 sm:grid-cols-[7rem_1fr] sm:px-3"
+      >
+        <time className="text-xs font-medium text-stone-400 tracking-wide sm:pt-1">
+          {note.date}
+        </time>
 
-          <h2 className="text-base font-semibold text-stone-900 group-hover:text-teal-700 transition-colors mb-2 tracking-tight">
+        <div>
+          <h2 className="text-base font-semibold text-stone-900 group-hover:text-teal-700 transition-colors mb-1.5 tracking-tight">
             {note.title}
           </h2>
 
