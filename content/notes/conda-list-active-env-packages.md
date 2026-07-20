@@ -12,10 +12,8 @@ conda list
 
 这个命令会列出当前激活环境中的依赖信息，包括包名、版本、构建信息和来源渠道。
 
-例如已经激活 `hello-agents` 环境后，终端前缀会显示：
+例如已经激活 `hello-agents` 环境后，在终端中执行 `conda list`：
 
-```powershell
-(hello-agents) PS D:\code\Hello-Agents>
-```
+![hello-agents 环境中 conda list 的输出截图](/images/notes/conda-list-hello-agents.png)
 
-此时执行 `conda list`，看到的就是 `hello-agents` 环境中的依赖列表。
+从截图里可以看到，终端前缀是 `(hello-agents)`，说明当前激活的是 `hello-agents` 环境。此时 `conda list` 输出的就是这个环境中的依赖列表。
