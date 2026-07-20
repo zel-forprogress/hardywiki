@@ -2,7 +2,6 @@
 title: "Flex 布局里的 min-width: 0"
 date: "2025-04-12"
 category: "frontend"
-tags: ["CSS", "布局"]
 ---
 
 在 flex 布局中，子元素默认不会小于自身内容宽度，所以文本省略号有时不生效。

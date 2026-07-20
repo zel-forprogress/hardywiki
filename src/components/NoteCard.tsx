@@ -24,14 +24,6 @@ export default function NoteCard({ note }: NoteCardProps) {
                 </span>
               </>
             )}
-            {note.tags.map((tag) => (
-              <span
-                key={tag}
-                className="text-xs text-stone-500 bg-stone-100 px-2 py-0.5 rounded-md"
-              >
-                #{tag}
-              </span>
-            ))}
           </div>
 
           <h2 className="text-base font-semibold text-stone-900 group-hover:text-teal-700 transition-colors mb-2 tracking-tight">

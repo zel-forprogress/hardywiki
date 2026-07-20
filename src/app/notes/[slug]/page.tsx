@@ -63,14 +63,6 @@ export default async function NotePage({ params }: NotePageProps) {
                 </Link>
               </>
             )}
-            {note.tags.map((tag) => (
-              <span
-                key={tag}
-                className="text-xs text-stone-500 bg-stone-100 px-2.5 py-1 rounded-md"
-              >
-                #{tag}
-              </span>
-            ))}
           </div>
 
           <h1 className="text-3xl font-bold text-stone-900 mb-0 tracking-tight">

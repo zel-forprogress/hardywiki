@@ -38,7 +38,6 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
           note.content,
           category?.name,
           category?.description,
-          ...note.tags,
         ]
           .filter(Boolean)
           .join(" ")

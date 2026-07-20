@@ -10,7 +10,6 @@ export interface Note {
   excerpt: string;
   content: string;
   category: string;
-  tags: string[];
 }
 
 const notesDirectory = path.join(process.cwd(), "content/notes");
@@ -27,7 +26,6 @@ function parseNote(slug: string, fileContents: string): Note {
     title: data.title as string,
     date: data.date as string,
     category: data.category as string,
-    tags: (data.tags as string[] | undefined) || [],
     excerpt: buildExcerpt(content),
     content,
   };
