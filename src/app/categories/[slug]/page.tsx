@@ -87,8 +87,8 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                 小记
               </h2>
               <div className="space-y-3">
-                {categoryNotes.map((note) => (
-                  <NoteCard key={note.slug} note={note} />
+                {categoryNotes.map((note, index) => (
+                  <NoteCard key={note.slug} note={note} index={index} />
                 ))}
               </div>
             </section>

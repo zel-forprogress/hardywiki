@@ -17,9 +17,9 @@ export default async function NotesPage() {
       </div>
 
       {notes.length > 0 ? (
-        <div className="border-y border-stone-200">
-          {notes.map((note) => (
-            <NoteCard key={note.slug} note={note} />
+        <div className="grid gap-5 sm:grid-cols-2">
+          {notes.map((note, index) => (
+            <NoteCard key={note.slug} note={note} index={index} />
           ))}
         </div>
       ) : (

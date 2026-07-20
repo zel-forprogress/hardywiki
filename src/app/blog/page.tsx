@@ -84,8 +84,8 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                   小记
                 </h2>
                 <div className="space-y-3">
-                  {filteredNotes.map((note) => (
-                    <NoteCard key={note.slug} note={note} />
+                  {filteredNotes.map((note, index) => (
+                    <NoteCard key={note.slug} note={note} index={index} />
                   ))}
                 </div>
               </section>
