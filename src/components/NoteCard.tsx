@@ -1,13 +1,11 @@
 import Link from "next/link";
-import { getCategoryInfo, type Note } from "@/lib/notes";
+import type { Note } from "@/lib/notes";
 
 interface NoteCardProps {
   note: Note;
 }
 
 export default function NoteCard({ note }: NoteCardProps) {
-  const category = getCategoryInfo(note.category);
-
   return (
     <article className="group">
       <Link href={`/notes/${note.slug}`}>
@@ -16,14 +14,6 @@ export default function NoteCard({ note }: NoteCardProps) {
             <time className="text-xs font-medium text-stone-400 tracking-wide">
               {note.date}
             </time>
-            {category && (
-              <>
-                <span className="text-stone-300">·</span>
-                <span className="text-xs font-medium text-teal-700 bg-teal-50 px-2 py-0.5 rounded-md">
-                  {category.icon} {category.name}
-                </span>
-              </>
-            )}
           </div>
 
           <h2 className="text-base font-semibold text-stone-900 group-hover:text-teal-700 transition-colors mb-2 tracking-tight">

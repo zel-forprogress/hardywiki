@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
-import { getAllNotes, getCategoryInfo, getNoteBySlug } from "@/lib/notes";
+import { getAllNotes, getNoteBySlug } from "@/lib/notes";
 
 interface NotePageProps {
   params: Promise<{ slug: string }>;
@@ -32,8 +32,6 @@ export default async function NotePage({ params }: NotePageProps) {
     notFound();
   }
 
-  const category = getCategoryInfo(note.category);
-
   return (
     <div>
       <Link
@@ -52,17 +50,6 @@ export default async function NotePage({ params }: NotePageProps) {
             <time className="text-xs font-medium text-stone-400 tracking-wide">
               {note.date}
             </time>
-            {category && (
-              <>
-                <span className="text-stone-300">·</span>
-                <Link
-                  href={`/categories/${category.slug}`}
-                  className="text-xs font-medium text-teal-700 bg-teal-50 px-2.5 py-1 rounded-md hover:bg-teal-100 transition-colors"
-                >
-                  {category.icon} {category.name}
-                </Link>
-              </>
-            )}
           </div>
 
           <h1 className="text-3xl font-bold text-stone-900 mb-0 tracking-tight">
