@@ -10,8 +10,7 @@ export default function AboutPage() {
 
       <div className="prose dark:prose-invert max-w-none space-y-6">
         <p className="text-base text-stone-700 leading-relaxed">
-          你好！我是一名热爱技术与创造的前端工程师。我专注于构建优雅、高效的用户界面，
-          并在不断探索现代 Web 开发的最佳实践。
+          你好！我是一名前端工程师，热爱技术与创造，专注于构建优雅、高效的用户界面，也持续探索现代 Web 开发的最佳实践。
         </p>
 
         <div className="my-8 p-6 rounded-2xl bg-gradient-to-br from-teal-50 to-emerald-50 border border-teal-100">
@@ -34,19 +33,17 @@ export default function AboutPage() {
         <h2 className="text-xl font-bold text-stone-900">我的经历</h2>
 
         <p className="text-stone-700 leading-relaxed">
-          我大学期间开始接触编程，从 HTML/CSS/JavaScript 入门，逐步深入 React 生态系统。
-          我喜欢解决复杂的问题，享受将设计稿转化为可交互界面的过程。
+          我从 HTML、CSS 和 JavaScript 入门，逐步深入 React 生态与工程化体系。相比堆砌工具，我更在意如何把复杂问题拆清楚，并把设计稿稳定地转化成可交互的产品界面。
         </p>
 
         <p className="text-stone-700 leading-relaxed">
-          在工作之余，我喜欢阅读技术文章、尝试新技术、写博客分享经验。我相信持续学习是
-          成为一名优秀工程师的关键。
+          工作之外，我喜欢阅读技术文章、尝试新工具，也会把实践中的经验整理成笔记。这个 Wiki 就是我持续沉淀知识、复盘问题和分享经验的地方。
         </p>
 
         <h2 className="text-xl font-bold text-stone-900">联系我</h2>
 
         <p className="text-stone-700 leading-relaxed">
-          如果你有任何问题或合作意向，欢迎通过以下方式联系我：
+          如果你有问题、建议或合作想法，欢迎通过下面的方式联系我：
         </p>
 
         <ul className="space-y-2">
@@ -66,7 +63,7 @@ export default function AboutPage() {
 
         <div className="mt-10 p-6 rounded-2xl bg-stone-50 border border-stone-200">
           <p className="text-sm text-stone-600 italic mb-0">
-            感谢你的阅读！期待与你交流。
+            感谢你的阅读，期待与你交流。
           </p>
         </div>
       </div>

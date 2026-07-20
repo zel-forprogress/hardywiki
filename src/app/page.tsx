@@ -4,12 +4,8 @@ import { categories } from "@/lib/categories";
 export default async function Home() {
   return (
     <div>
-      {/* Hero */}
       <section className="mb-14">
         <div className="relative">
-          <div className="absolute -top-4 -left-4 w-28 h-28 bg-gradient-to-br from-teal-100 to-emerald-100 rounded-full blur-2xl opacity-60" />
-          <div className="absolute -top-2 -right-8 w-36 h-36 bg-gradient-to-br from-emerald-100 to-teal-100 rounded-full blur-2xl opacity-40" />
-
           <div className="relative">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-teal-50 border border-teal-100 text-teal-700 text-xs font-medium mb-6">
               <span className="relative flex h-2 w-2">
@@ -24,8 +20,8 @@ export default async function Home() {
             </h1>
 
             <p className="text-lg text-stone-600 leading-relaxed max-w-xl mb-8">
-              在这里，我系统地整理和分享前端、后端、DevOps 等方向的技术知识。
-              每一篇文章都是学习与实践的沉淀。
+              在这里，我系统地整理和分享前端、后端、DevOps
+              等方向的技术知识。每一篇文章都来自学习与实践中的沉淀。
             </p>
 
             <div className="flex flex-wrap gap-3">
@@ -35,7 +31,7 @@ export default async function Home() {
               >
                 浏览全部文章
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </Link>
               <Link
@@ -49,10 +45,13 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Categories */}
       <section className="mb-14">
-        <h2 className="text-lg font-bold text-stone-900 mb-1 tracking-tight">知识分类</h2>
-        <p className="text-sm text-stone-500 mb-4">选择一个分类开始探索</p>
+        <h2 className="text-lg font-bold text-stone-900 mb-1 tracking-tight">
+          知识分类
+        </h2>
+        <p className="text-sm text-stone-500 mb-4">
+          选择一个分类开始探索
+        </p>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
           {categories.map((cat) => (
             <Link
@@ -66,15 +65,15 @@ export default async function Home() {
                   <div className="text-sm font-semibold text-stone-900 group-hover:text-teal-700 transition-colors">
                     {cat.name}
                   </div>
-                  <div className="text-xs text-stone-500 mt-0.5 line-clamp-1">{cat.description}</div>
+                  <div className="text-xs text-stone-500 mt-0.5 line-clamp-1">
+                    {cat.description}
+                  </div>
                 </div>
               </div>
             </Link>
           ))}
         </div>
       </section>
-
-      {/* 这里留空，以后你可以放自定义内容 */}
     </div>
   );
 }

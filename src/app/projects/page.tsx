@@ -2,7 +2,8 @@ export default function ProjectsPage() {
   const projects = [
     {
       title: "项目一：个人博客",
-      description: "使用 Next.js 和 Tailwind CSS 搭建的简洁个人博客网站，注重阅读体验和代码质量。",
+      description:
+        "使用 Next.js 和 Tailwind CSS 搭建的简洁个人博客网站，注重阅读体验、内容组织和代码质量。",
       tech: ["Next.js", "TypeScript", "Tailwind CSS"],
       link: "#",
     },
@@ -21,7 +22,7 @@ export default function ProjectsPage() {
           我的项目
         </h1>
         <p className="text-stone-500">
-          这是我参与或独立开发的一些项目
+          这里记录我参与或独立开发的一些项目。
         </p>
         <div className="w-12 h-1 bg-gradient-to-r from-teal-500 to-emerald-500 rounded-full mt-4" />
       </div>
@@ -42,12 +43,12 @@ export default function ProjectsPage() {
             </p>
             {project.tech.length > 0 && (
               <div className="flex flex-wrap gap-2 mb-4">
-                {project.tech.map((t) => (
+                {project.tech.map((tech) => (
                   <span
-                    key={t}
+                    key={tech}
                     className="text-xs px-2.5 py-1 rounded-lg bg-teal-50 text-teal-700 font-medium"
                   >
-                    {t}
+                    {tech}
                   </span>
                 ))}
               </div>
@@ -61,7 +62,7 @@ export default function ProjectsPage() {
               >
                 查看项目
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                 </svg>
               </a>
             )}

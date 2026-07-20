@@ -1,16 +1,17 @@
 import Link from "next/link";
-import type { Post } from "@/lib/posts";
+import { getCategoryInfo, type Post } from "@/lib/posts";
 
 interface PostCardProps {
   post: Post;
 }
 
 export default function PostCard({ post }: PostCardProps) {
+  const category = getCategoryInfo(post.category);
+
   return (
     <article className="group">
       <Link href={`/blog/${post.slug}`}>
         <div className="relative p-6 rounded-2xl bg-white border border-stone-200 hover:border-teal-200 hover:shadow-lg hover:shadow-stone-200/50 transition-all duration-300">
-          {/* Accent line */}
           <div className="absolute top-6 left-0 w-0.5 h-8 bg-gradient-to-b from-teal-400 to-emerald-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
           <div className="flex items-center gap-3 mb-3">
@@ -20,13 +21,13 @@ export default function PostCard({ post }: PostCardProps) {
             <span className="text-stone-300">·</span>
             <span className="text-xs text-stone-500 flex items-center gap-1">
               <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
               {post.readTime} 分钟
             </span>
             <span className="text-stone-300">·</span>
             <span className="text-xs font-medium text-teal-700 bg-teal-50 px-2 py-0.5 rounded-md">
-              {post.category}
+              {category ? `${category.icon} ${category.name}` : post.category}
             </span>
           </div>
 
@@ -41,7 +42,7 @@ export default function PostCard({ post }: PostCardProps) {
           <div className="mt-4 flex items-center gap-1.5 text-sm font-medium text-teal-600 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-0 group-hover:translate-x-1">
             <span>阅读全文</span>
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </div>
         </div>
