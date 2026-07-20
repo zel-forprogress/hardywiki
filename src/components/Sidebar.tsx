@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { FormEvent, useState } from "react";
-import { categories } from "@/lib/categories";
 
 const mainNav = [
   { href: "/", label: "首页" },
@@ -93,36 +92,6 @@ export default function Sidebar() {
             })}
           </ul>
         </nav>
-
-        <div className="mb-4">
-          <div className="h-px bg-stone-200" />
-        </div>
-
-        <div className="mb-5">
-          <h3 className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-2.5 px-3">
-            知识分类
-          </h3>
-          <ul className="space-y-0.5">
-            {categories.map((cat) => {
-              const isActive = pathname === `/categories/${cat.slug}`;
-              return (
-                <li key={cat.slug}>
-                  <Link
-                    href={`/categories/${cat.slug}`}
-                    className={`flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm transition-all ${
-                      isActive
-                        ? "bg-teal-50 text-teal-700"
-                        : "text-stone-600 hover:text-stone-900 hover:bg-white"
-                    }`}
-                  >
-                    <span className="text-base">{cat.icon}</span>
-                    <span>{cat.name}</span>
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
 
         <div className="flex-1" />
 

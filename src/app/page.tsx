@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { categories } from "@/lib/categories";
 
 export default async function Home() {
   return (
@@ -34,44 +33,8 @@ export default async function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </Link>
-              <Link
-                href="/categories/frontend"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white border border-stone-200 text-stone-700 text-sm font-medium hover:border-stone-300 hover:shadow-sm transition-all"
-              >
-                按分类浏览
-              </Link>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section className="mb-14">
-        <h2 className="text-lg font-bold text-stone-900 mb-1 tracking-tight">
-          知识分类
-        </h2>
-        <p className="text-sm text-stone-500 mb-4">
-          选择一个分类开始探索
-        </p>
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-          {categories.map((cat) => (
-            <Link
-              key={cat.slug}
-              href={`/categories/${cat.slug}`}
-              className="group p-4 rounded-2xl bg-white border border-stone-200 hover:border-teal-200 hover:shadow-md hover:shadow-stone-200/50 transition-all"
-            >
-              <div className="flex items-center gap-3">
-                <span className="text-2xl">{cat.icon}</span>
-                <div>
-                  <div className="text-sm font-semibold text-stone-900 group-hover:text-teal-700 transition-colors">
-                    {cat.name}
-                  </div>
-                  <div className="text-xs text-stone-500 mt-0.5 line-clamp-1">
-                    {cat.description}
-                  </div>
-                </div>
-              </div>
-            </Link>
-          ))}
         </div>
       </section>
     </div>
